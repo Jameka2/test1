@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>احتفال - عيد ميلاد هاجر</title>
+  <style>
+    /* Reset + base */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Segoe UI', Tahoma, Roboto, 'Noto Naskh Arabic', sans-serif;
+      background: radial-gradient(ellipse at center, #0b1220 0%, #05060a 70%);
+      color:#fff;
+      overflow:hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+.cake .number {
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  transform: translateX(-0%);
+  font-weight: 900;
+  font-size: 56px;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 15px #ffb347,
+    0 0 25px #ffcc33,
+    0 0 40px #ff6600,
+    0 6px 18px rgba(0, 0, 0, 0.6);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+/* ✨ تأثير الشرارات فوق الرقم 20 ✨ */
+.cake .number::before,
+.cake .number::after,
+.cake .number span {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffb347 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  animation: sparkFly 1.4s ease-in-out infinite;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px #ffb347) drop-shadow(0 0 25px #ff6600);
+  pointer-events: none;
+}
+
+.cake .number::after {
+  left: 53%;
+  animation-delay: 0.5s;
+}
+
+.cake .number span {
+  left: 47%;
+  animation-delay: 0.8s;
+}
+
+@keyframes sparkFly {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -35px) scale(1.3);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -65px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* ✨ توهج خفيف وناعم لرقم 20 ✨ */
+@keyframes softGlow {
+  0%, 100% {
+    opacity: 0.7;
+    text-shadow: 0 0 8px #ffaa00, 0 0 16px #ff6600;
+  }
+  80% {
+    opacity: 1;
+    text-shadow: 0 0 15px #ffcc00, 0 0 30px #ff9900;
+  }
+}
+
+.cake .number {
+  animation: softGlow 3s ease-in-out infinite;
+}
+
+
+/* باقي الكود بتاعك زي ما هو */
+
+
+    /* Stars background */
+    .stars{position:fixed;inset:0;pointer-events:none}
+    .star{position:absolute;width:2px;height:2px;background:rgba(255,255,255,0.9);border-radius:50%;opacity:0}
+
+    /* dark intro overlay */
+    .overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;z-index:50;flex-direction:column;gap:18px
+    }
+    .overlay h1{font-size:64px;letter-spacing:6px;color:#ffd9e2;text-shadow:0 6px 30px rgba(255,120,160,0.08)}
+    .btn{background:linear-gradient(90deg,#ff6b9a,#ffd36b);border:none;padding:18px 36px;border-radius:999px;font-weight:700;font-size:20px;cursor:pointer;box-shadow:0 10px 30px rgba(255,107,154,0.18);transition:transform .18s}
+    .btn:active{transform:translateY(2px) scale(.99)}
+
+    /* main stage */
+    .stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column}
+
+    /* glowing name */
+    .name-wrap{position:absolute;top:5%;left:50%;transform:translateX(-50%);text-align:center;z-index:40}
+    .eng-name{font-size:96px;font-weight:900;letter-spacing:6px;color:#fff;text-transform:uppercase;filter:drop-shadow(0 12px 40px rgba(255,80,160,0.25));}
+    .eng-name .char{display:inline-block;transform-origin:center;animation:pop 1.6s ease forwards}
+    @keyframes pop{0%{transform:translateY(40px) rotate(0) scale(.3);opacity:0}50%{transform:translateY(-6px) rotate(-3deg) scale(1.08);opacity:1}100%{transform:translateY(0) rotate(0) scale(1)}}
+    /* subtle float after pop */
+    .eng-name .char.float{animation:float 3s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+
+    .subtitle{margin-top:8px;font-size:20px;color:#ffdfe8;opacity:.95}
+
+    /* falling hearts */
+    .hearts{position:absolute;inset:0;pointer-events:none;z-index:30}
+    .heart{position:absolute;width:28px;height:28px;background:transparent}
+    .heart svg{width:100%;height:100%;filter:drop-shadow(0 8px 20px rgba(255,80,130,0.18))}
+
+    /* Happy text */
+    .happy{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);font-size:64px;font-weight:800;z-index:35;opacity:0;transform-origin:center;}
+    .happy.show{animation:popHappy .9s cubic-bezier(.2,.9,.2,1) forwards}
+    @keyframes popHappy{0%{transform:scale(.4) rotateX(90deg);opacity:0}60%{transform:scale(1.08) rotateX(0);opacity:1}100%{transform:scale(1)}}
+
+    /* typed Arabic text box */
+    .card{position:relative;max-width:820px;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);box-shadow:0 8px 40px rgba(0,0,0,0.6);z-index:34}
+    .arabic-text{font-size:20px;line-height:1.8;color:#ffeef4;text-align:right;direction:rtl;min-height:140px}
+    .typed-cursor{display:inline-block;width:10px;background:linear-gradient(180deg,#fff0,#fff);margin-right:6px;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    /* cake */
+    .cake-wrap{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);z-index:33}
+    .cake{width:260px;height:auto}
+    .cake .number{position:absolute;left:50%;top:34px;transform:translateX(-0%);font-weight:900;font-size:56px;color:#fff;letter-spacing:4px;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    /* ✨ حركة ظهور واختفاء رقم 20 ✨ */
+   @keyframes fadeGlow {
+     0%, 100% {
+       opacity: 0.2;
+       transform: translateX(-0%) scale(1);
+     }
+     50% {
+       opacity: 1;
+       transform: translateX(-0%) scale(1.1);
+     }
+   }
+    .cake .number {
+      animation: glow 1.5s ease-in-out infinite alternate,
+                 fadeGlow 3s ease-in-out infinite;
+    }
+    /* new number glow and appear/disappear */
+    .cake .number.show{color:#fff;animation:riseGlow .9s ease forwards, pulse 1.2s ease-in-out infinite}
+    @keyframes riseGlow{0%{transform:translateX(-52%) translateY(10px) scale(.8);opacity:0}50%{transform:translateX(-50%) translateY(-6px) scale(1.08);opacity:1}100%{transform:translateX(-50%) translateY(0) scale(1)}}
+    @keyframes pulse{0%{text-shadow:0 6px 18px rgba(255,200,60,0.08)}50%{text-shadow:0 12px 40px rgba(255,140,30,0.22)}100%{text-shadow:0 6px 18px rgba(255,200,60,0.08)}}
+
+    /* fireworks canvas */
+    #fireworks{position:absolute;inset:0;z-index:45;pointer-events:none}
+
+    /* footer controls */
+    .controls{position:fixed;bottom:18px;left:18px;z-index:60;display:flex;gap:10px;align-items:center}
+    .small-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;color:#fff;cursor:pointer}
+
+    /* responsive */
+    @media (max-width:700px){
+  .eng-name{
+    font-size:46px;      /* أقل من 96px */
+    white-space: nowrap;  /* يمنع الحروف تنزل تحت بعض */
+  }
+      .happy{font-size:36px}
+      .cake{width:180px}
+      .card{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="overlay" id="overlay">
+    <h1>احتفال</h1>
+    <button class="btn" id="startBtn">اضغط هنا للاحتفال 🎉</button>
+  </div>
+
+  <div class="stage" aria-hidden="true">
+    <div class="name-wrap" id="nameWrap" style="opacity:0">
+      <div class="eng-name" id="engName"></div>
+      <div class="subtitle">كل سنة وأنتِ طيبة يا هجوره 🎂💕</div>
+    </div>
+    <div style="position:relative;z-index:34;margin-top:-5px;display:flex;justify-content:center;width:100%">
+      <div class="card" id="arabicCard" style="display:none">
+        <div class="arabic-text" id="arabicText"></div>
+      </div>
+    </div>
+    <div class="happy" id="happyText">Happy Birthday Hagar!</div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <canvas id="fireworks"></canvas>
+
+    <div class="cake-wrap" id="cakeWrap">
+      <!-- Simple cake SVG -->
+      <div style="position:relative;display:inline-block">
+        <svg class="cake" viewBox="0 -40 200 200" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect x="20" y="80" width="160" height="70" rx="16" fill="#ffd6e0"/>
+            <rect x="40" y="60" width="120" height="30" rx="12" fill="#ff9fb0"/>
+            <ellipse cx="100" cy="150" rx="80" ry="14" fill="rgba(0,0,0,0.12)"/>
+            <!-- frosting -->
+            <path d="M40 60 C55 30, 145 30, 160 60 L160 80 L40 80 Z" fill="#ffb6c9"/>
+            <!-- candles as small rectangles -->
+            <rect x="86" y="36" width="6" height="24" rx="2" fill="#fff"/>
+            <rect x="98" y="36" width="6" height="24" rx="2" fill="#fff"/>
+            <rect x="110" y="36" width="6" height="24" rx="2" fill="#fff"/>
+            <!-- flames -->
+            <g fill="#ffd36b">
+              <path d="M89 34 C91 28, 95 28, 96 34 C95 30, 91 30, 89 34"/>
+              <path d="M101 34 C103 28, 107 28, 108 34 C107 30, 103 30, 101 34"/>
+              <path d="M113 34 C115 28, 119 28, 120 34 C119 30, 115 30, 113 34"/>
+            </g>
+            <!-- number 20 -->
+            <text x="100" y="28" text-anchor="middle" font-size="56" font-weight="900" fill="#ffd36b" class="number" style="filter:drop-shadow(0 8px 24px rgba(255,180,60,0.28));">20</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div style="position:relative;z-index:34;margin-top:40px;display:flex;justify-content:center;width:100%">
+      <div class="card" id="arabicCard" style="display:none">
+        <div class="arabic-text" id="arabicText"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="controls">
+    <button class="small-btn" id="playAudio">تشغيل أغنية</button>
+    <button class="small-btn" id="replayBtn">إعادة الاحتفال</button>
+  </div>
+
+  <!-- audio (user should replace src with their chosen song file) -->
+  <audio id="song" src="" preload="auto"></audio>
+
+  <script>
+    // ---------- configuration ----------
+    const englishName = 'ragah'; // displayed English name
+const typedArabic = `
+🎉🌸 كل سنة وأنتِ طيبة يا هاجر، يا أجمل ما في الدنيا 🌸🎉
+
+✨ يوم ميلادك مش بس يوم عادي، 
+ده يوم اتولدت فيه البهجة والحنية ❤
+
+🌟 كل لحظة وأنتِ بخير وسعادة، 
+وضحكتك منورة الدنيا زي النجوم 💫
+
+💖 ربنا يحققلك كل اللي بتحلمي بيه، 
+ويخلي أيامك كلها حب وفرح
+
+🌙 وتفضلي دايمًا القمر اللي منوّر حياة كل اللي حواليه 🌸🎂💕
+`;
+
+    // ---------- helpers ----------
+    const overlay = document.getElementById('overlay');
+    const startBtn = document.getElementById('startBtn');
+    const engNameEl = document.getElementById('engName');
+    const nameWrap = document.getElementById('nameWrap');
+    const heartsContainer = document.getElementById('hearts');
+    const arabicCard = document.getElementById('arabicCard');
+    const arabicTextEl = document.getElementById('arabicText');
+    const happyText = document.getElementById('happyText');
+    const fireworksCanvas = document.getElementById('fireworks');
+    const playAudioBtn = document.getElementById('playAudio');
+    const song = document.getElementById('song');
+    const replayBtn = document.getElementById('replayBtn');
+
+    // Set default - empty audio src. User should drag their mp3 into song.src or press play to load local file.
+    song.src = ''; // <-- ضع رابط الملف الصوتي هنا لو عندك
+    // ---------- detect mobile ----------
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // قلل النجوم والقلوب على الموبايل
+    const starCount = isMobile ? 60 : 120;   // بدل 120 نجمة إلى 60
+    let heartIntervalTime = isMobile ? 800 : 350; // أبطأ أكثر // القلوب تنزل أبطأ على الموبايل
+    // لما يبدأ القلوب
+    function startHearts() { 
+      heartInterval = setInterval(spawnHeart, heartIntervalTime); 
+    }
+    // ---------- stars background ----------
+    const stars = document.getElementById('stars');
+    for(let i=0;i<starCount;i++){
+      const s = document.createElement('div');s.className='star';
+      const x = Math.random()*100;const y = Math.random()*100;const size = Math.random()*2+1;const delay = Math.random()*6;
+      s.style.left = x+'%';s.style.top = y+'%';s.style.width = size+'px';s.style.height = size+'px';
+      s.style.opacity = Math.random()*0.9; s.style.animation = `twinkle ${2+Math.random()*4}s ${delay}s infinite`;
+      stars.appendChild(s);
+    }
+    const twinkleStyle = document.createElement('style');twinkleStyle.textContent = `@keyframes twinkle{0%{opacity:0.1}50%{opacity:0.9}100%{opacity:0.1}}`;
+    document.head.appendChild(twinkleStyle);
+
+    // ---------- build english name letters with staggered animation ----------
+    function showEnglishName(){
+      engNameEl.innerHTML = '';
+      const letters = Array.from(englishName);
+      letters.forEach((ch,i)=>{
+        const span = document.createElement('span');span.className='char';span.textContent = ch;
+        span.style.animationDelay = (i*0.08)+'s';
+        engNameEl.appendChild(span);
+      });
+      nameWrap.style.opacity = 1;
+      // after pop finishes, add float class so letters keep moving
+      setTimeout(()=>{
+        const chars = engNameEl.querySelectorAll('.char');
+        chars.forEach(c=> c.classList.add('float'));
+      }, 1800 + letters.length*80);
+    }
+
+    // ---------- hearts falling ----------
+    function spawnHeart(){
+      const h = document.createElement('div');h.className='heart';
+      const size = Math.floor(Math.random()*28)+18;h.style.width = size+'px';h.style.height = size+'px';
+      h.style.left = (Math.random()*100)+'%';
+      h.style.top = '-40px';
+      h.innerHTML = `
+        <svg viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.6,0c-2.7,0-5.1,1.5-6.6,3.7C15.5,1.5,13.1,0,10.4,0C4.7,0,0,4.7,0,10.4c0,7.8,11.3,13.8,16,19.2c4.7-5.4,16-11.4,16-19.2C32,4.7,27.3,0,23.6,0z" fill="#ff718f"/>
+        </svg>`;
+      heartsContainer.appendChild(h);
+      const duration = 6+Math.random()*6;
+      h.animate([
+        {transform:`translateY(0) rotate(0)`, opacity:1},
+        {transform:`translateY(${innerHeight+60}px) rotate(${360*Math.random()}deg)`, opacity:0.1}
+      ],{duration:duration*1000,easing:'linear'}).onfinish = ()=>h.remove();
+    }
+
+    let heartInterval;
+    function startHearts(){ heartInterval = setInterval(spawnHeart,350); }
+    function stopHearts(){ clearInterval(heartInterval); }
+
+    // ---------- typing Arabic word-by-word ----------
+    function typeArabic(text, container, onDone){
+      container.innerHTML = '';
+      const words = text.split(' ');
+      let i=0;
+      function next(){
+        if(i>=words.length){ if(onDone) onDone(); return; }
+        const w = words[i];
+        const span = document.createElement('span');
+        span.textContent = w + (i<words.length-1? ' ':'');
+        container.appendChild(span);
+        // smooth reveal per word
+        span.style.opacity = 0; span.style.transform='translateY(6px)';
+        span.animate([{opacity:0, transform:'translateY(6px)'},{opacity:1, transform:'translateY(0)'}],{duration:360,fill:'forwards'});
+        i++;
+        setTimeout(next, 220 + Math.random()*160);
+      }
+      next();
+    }
+
+    // ---------- simple fireworks canvas (small) ----------
+    const fw = fireworksCanvas; const ctx = fw.getContext('2d');
+    function resizeCanvas(){fw.width = innerWidth; fw.height = innerHeight}
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    let fireworks = [];
+    function createFirework(x,y){
+      const count = 18 + Math.floor(Math.random()*18);
+      for(let i=0;i<count;i++){
+        fireworks.push({x,y,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6,color:`hsl(${Math.random()*360},80%,60%)`,life:40+Math.floor(Math.random()*40)})
+      }
+      // if near cake area, flash number
+      const cakeRect = document.querySelector('.cake').getBoundingClientRect();
+      if(Math.abs(y - (cakeRect.top + cakeRect.height/2)) < 200){ flashCakeNumber(); }
+    }
+    function animateFW(){
+      ctx.clearRect(0,0,fw.width,fw.height);
+      for(let i=fireworks.length-1;i>=0;i--){
+        const p = fireworks[i];
+        p.x += p.vx; p.y += p.vy; p.vy += 0.04; p.life--;
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(1,p.life/15),0,Math.PI*2); ctx.fill();
+        if(p.life<=0) fireworks.splice(i,1);
+      }
+      requestAnimationFrame(animateFW);
+    }
+    animateFW();
+
+    // ---------- cake number flash helper ----------
+    function flashCakeNumber(){
+      const num = document.querySelector('.cake .number');
+      if(!num) return;
+      num.classList.add('show');
+      setTimeout(()=> num.classList.remove('show'), 1200);
+    }
+
+    // ---------- main sequence when start pressed ----------
+    function startSequence(){
+      overlay.style.transition='opacity .6s'; overlay.style.opacity=0; setTimeout(()=>overlay.remove(),700);
+
+      // show name
+      showEnglishName();
+
+      // start hearts
+      startHearts();
+
+      // fireworks bursts at intervals
+      const fwInterval = setInterval(()=>{
+        createFirework(200+Math.random()*(innerWidth-400), 80+Math.random()*180);
+      },900);
+
+      // show happy after short delay
+      setTimeout(()=>{ happyText.classList.add('show'); }, 900);
+
+      // show arabic typed text after happy
+      setTimeout(()=>{
+        arabicCard.style.display='block';
+        typeArabic(typedArabic, arabicTextEl, ()=>{});
+      }, 1700);
+
+      // stop fireworks after 12s and hearts after 18s
+      setTimeout(()=>{ clearInterval(fwInterval); }, 12000);
+      setTimeout(()=>{ stopHearts(); }, 18000);
+
+      // create big final fireworks and sparkle around cake
+      setTimeout(()=>{
+        createFirework(innerWidth/2 - 120, innerHeight/3);
+        createFirework(innerWidth/2 + 120, innerHeight/3);
+      }, 4000);
+
+      // after sequence allow replay
+      replayBtn.disabled = false;
+    }
+
+    startBtn.addEventListener('click', ()=>{
+      startSequence();
+      // try to autoplay audio if src present
+      if(song.src){ song.play().catch(()=>{/*autoplay blocked*/}); }
+    });
+
+    // play audio button behavior
+    playAudioBtn.addEventListener('click', ()=>{
+      if(!song.src){
+        alert('ضع رابط ملف الأغنية في عنصر الـ audio داخل الكود أو سحب ملف محلي عبر أدوات المطور في المتصفح.');
+        return;
+      }
+      song.currentTime = 0; song.play().catch(()=>alert('تشغيل تلقائي محظور - سمح بتشغيل الصوت من المتصفح.'));
+    });
+
+    // replay
+    replayBtn.addEventListener('click', ()=>{ location.reload(); });
+
+    // allow dropping audio file onto page to set song.src (convenience)
+    window.addEventListener('dragover',e=>e.preventDefault());
+    window.addEventListener('drop',e=>{
+      e.preventDefault();
+      const f = e.dataTransfer.files && e.dataTransfer.files[0];
+      if(f){
+        const url = URL.createObjectURL(f);
+        song.src = url; song.load(); alert('تم تحميل ملف الأغنية محليًا. اضغط "تشغيل أغنية" لتشغيلها.');
+      }
+    });
+
+    // initial small hearts to hint
+    for(let i=0;i<6;i++){ setTimeout(spawnHeart, i*300); }
+    // start continuous hearts as user wanted
+    startHearts();
+
+    // small accessibility: pressing space/enter triggers start when overlay present
+    window.addEventListener('keydown',e=>{ if((e.key===' '||e.key==='Enter') && document.getElementById('overlay')){ startBtn.click(); } });
+
+  </script>
+</body>
+</html>
